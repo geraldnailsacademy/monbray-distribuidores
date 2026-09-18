@@ -3,42 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monbray - Registro de Distribuidores Internacionales</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Monbray - Registro de Distribuidores</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Supabase JS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <!-- SheetJS para exportar a Excel -->
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <style>
         .bg-monbray { background-color: #e6127d; }
-        .text-monbray { color: #e6127d; }
         .border-monbray { border-color: #e6127d; }
         .focus-monbray:focus { border-color: #e6127d; ring-color: #e6127d; }
     </style>
 </head>
 <body class="bg-gray-950 text-white min-h-screen flex flex-col justify-between font-sans">
 
-    <!-- HEADER / LOGO -->
-    <header class="py-8 text-center border-b border-gray-800 bg-black/40">
+    <!-- HEADER MINIMALISTA -->
+    <header class="py-6 text-center border-b border-gray-800 bg-black/50">
         <div class="container mx-auto px-4">
-            <img src="Monbray-Logo-.png" alt="Logo Monbray" class="h-16 md:h-20 mx-auto object-contain drop-shadow-[0_0_15px_rgba(230,18,125,0.4)]">
-            <p id="evento-tag" class="mt-3 text-sm tracking-widest text-gray-400 uppercase font-semibold"></p>
+            <img src="Monbray-Logo-.png" alt="Monbray" class="h-16 mx-auto object-contain drop-shadow-[0_0_12px_rgba(230,18,125,0.4)]">
+            <p id="evento-tag" class="mt-2 text-xs tracking-widest text-gray-400 uppercase font-semibold"></p>
         </div>
     </header>
 
-    <!-- FORMULARIO DE REGISTRO -->
-    <main class="container mx-auto px-4 py-8 max-w-xl flex-grow">
+    <!-- FORMULARIO MINIMALISTA -->
+    <main class="container mx-auto px-4 py-8 max-w-lg flex-grow">
         <div class="bg-gray-900 border border-gray-800 rounded-2xl p-6 md:p-8 shadow-2xl">
-            <h1 class="text-2xl md:text-3xl font-bold text-center mb-2">Registro de Distribuidores</h1>
-            <p class="text-gray-400 text-center text-sm mb-6">Únete a nuestra red oficial de distribución comercial internacional.</p>
+            <h1 class="text-2xl font-bold text-center mb-1">Registro de Distribuidores</h1>
+            <p class="text-gray-400 text-center text-xs mb-6">Completa tus datos comerciales para unirte a nuestra red oficial.</p>
 
             <form id="registro-form" class="space-y-4">
                 
-                <!-- PAÍS -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-300 mb-1">País del Evento / Distribución *</label>
-                    <select id="pais" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus-monbray">
+                    <label class="block text-xs font-medium text-gray-300 mb-1">País *</label>
+                    <select id="pais" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus-monbray">
                         <option value="">Selecciona tu país</option>
                         <option value="Colombia">Colombia 🇨🇴</option>
                         <option value="Venezuela">Venezuela 🇻🇪</option>
@@ -46,34 +41,29 @@
                     </select>
                 </div>
 
-                <!-- NOMBRE COMPLETO -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-300 mb-1">Nombre Completo *</label>
-                    <input type="text" id="nombre" required placeholder="Ej. María Pérez" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus-monbray">
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Nombre Completo *</label>
+                    <input type="text" id="nombre" required placeholder="Ej. María Pérez" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus-monbray">
                 </div>
 
-                <!-- EMPRESA / NEGOCIO -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-300 mb-1">Nombre de la Empresa o Negocio</label>
-                    <input type="text" id="empresa" placeholder="Ej. Nails Studio & Beauty" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus-monbray">
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Empresa / Negocio</label>
+                    <input type="text" id="empresa" placeholder="Ej. Nails Studio & Beauty" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus-monbray">
                 </div>
 
-                <!-- WHATSAPP -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-300 mb-1">Número de WhatsApp (con código de país) *</label>
-                    <input type="tel" id="whatsapp" required placeholder="Ej. +57 300 1234567 o +58 412 1234567" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus-monbray">
+                    <label class="block text-xs font-medium text-gray-300 mb-1">WhatsApp *</label>
+                    <input type="tel" id="whatsapp" required placeholder="Ej. +57 300 1234567 o +58 412 1234567" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus-monbray">
                 </div>
 
-                <!-- EMAIL -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-300 mb-1">Correo Electrónico *</label>
-                    <input type="email" id="email" required placeholder="ejemplo@correo.com" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus-monbray">
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Correo Electrónico *</label>
+                    <input type="email" id="email" required placeholder="ejemplo@correo.com" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus-monbray">
                 </div>
 
-                <!-- RUBRO / TIPO DE NEGOCIO -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-300 mb-1">Tipo de Negocio / Rubro *</label>
-                    <select id="rubro" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus-monbray">
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Rubro *</label>
+                    <select id="rubro" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus-monbray">
                         <option value="">Selecciona una opción</option>
                         <option value="Distribuidora de Belleza">Distribuidora de Belleza</option>
                         <option value="Mayorista">Mayorista</option>
@@ -84,74 +74,65 @@
                     </select>
                 </div>
 
-                <!-- CIUDAD Y ESTADO -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-300 mb-1">Ciudad y Estado / Departamento *</label>
-                    <input type="text" id="ciudad_estado" required placeholder="Ej. Medellín, Antioquia / Caracas, DCI" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus-monbray">
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Ciudad y Estado *</label>
+                    <input type="text" id="ciudad_estado" required placeholder="Ej. Medellín, Antioquia / Caracas, DCI" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus-monbray">
                 </div>
 
-                <!-- DIRECCIÓN -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-300 mb-1">Dirección Comercial o Fiscal</label>
-                    <input type="text" id="direccion" placeholder="Ej. Av. Principal, C.C. Plaza, Local 12" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus-monbray">
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Dirección Comercial</label>
+                    <input type="text" id="direccion" placeholder="Ej. Av. Principal, C.C. Plaza, Local 12" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus-monbray">
                 </div>
 
-                <!-- BOTÓN DE ENVÍO -->
-                <button type="submit" id="btn-submit" class="w-full bg-monbray hover:opacity-90 font-bold py-4 rounded-lg text-white shadow-lg transition-all duration-200 mt-6">
+                <button type="submit" id="btn-submit" class="w-full bg-monbray hover:opacity-90 font-bold py-3.5 rounded-lg text-white shadow-lg transition-all duration-200 mt-4 text-sm">
                     Completar Registro
                 </button>
             </form>
 
-            <!-- MENSAJES DE ESTADO -->
             <div id="msg-exito" class="hidden mt-6 bg-emerald-950/80 border border-emerald-500/50 p-6 rounded-xl text-center">
-                <p class="text-emerald-400 font-bold text-xl mb-1">¡Registro Exitoso!</p>
-                <p class="text-gray-300 text-sm">Gracias por tu interés en representar a <strong>Monbray</strong>. Nuestro equipo comercial se pondrá en contacto contigo a la brevedad.</p>
+                <p class="text-emerald-400 font-bold text-lg mb-1">¡Registro Exitoso!</p>
+                <p class="text-gray-300 text-xs">Gracias por tu interés en <strong>Monbray</strong>. Nos comunicaremos contigo a la brevedad.</p>
             </div>
-            <div id="msg-error" class="hidden mt-4 bg-rose-950/80 border border-rose-500/50 p-4 rounded-xl text-center text-rose-300 text-sm">
+            <div id="msg-error" class="hidden mt-4 bg-rose-950/80 border border-rose-500/50 p-4 rounded-xl text-center text-rose-300 text-xs">
                 Ocurrió un inconveniente al guardar. Por favor, reintenta.
             </div>
         </div>
     </main>
 
-    <!-- FOOTER / ACCESO COMERCIAL EXCEL -->
-    <footer class="py-6 border-t border-gray-900 text-center text-gray-600 text-xs">
-        <p>© Monbray Nail Art Professional. Todos los derechos reservados.</p>
-        <button onclick="abrirModalAdmin()" class="mt-2 text-gray-500 hover:text-gray-300 underline font-medium">
+    <footer class="py-4 border-t border-gray-900 text-center text-gray-600 text-xs">
+        <p>© Monbray Nail Art Professional</p>
+        <button onclick="abrirModalAdmin()" class="mt-1 text-gray-500 hover:text-gray-300 underline font-medium text-[11px]">
             Acceso Comercial (Descargar Datos)
         </button>
     </footer>
 
-    <!-- MODAL PIN PARA EXCEL -->
+    <!-- MODAL PIN EXCEL -->
     <div id="modal-admin" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-50">
-        <div class="bg-gray-900 border border-gray-800 rounded-xl p-6 max-w-sm w-full">
-            <h3 class="text-lg font-bold text-white mb-2 text-center">Panel Comercial Monbray</h3>
-            <p class="text-gray-400 text-xs mb-4 text-center">Introduce el PIN autorizado para descargar la base de datos en Excel.</p>
-            <input type="password" id="admin-pin-input" placeholder="PIN de Seguridad" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white text-center text-lg mb-4 focus:outline-none focus-monbray">
+        <div class="bg-gray-900 border border-gray-800 rounded-xl p-6 max-w-xs w-full">
+            <h3 class="text-base font-bold text-white mb-1 text-center">Panel Comercial Monbray</h3>
+            <p class="text-gray-400 text-xs mb-4 text-center">Introduce el PIN para descargar Excel.</p>
+            <input type="password" id="admin-pin-input" placeholder="PIN" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-white text-center text-base mb-4 focus:outline-none focus-monbray">
             <div class="flex gap-2">
-                <button onclick="cerrarModalAdmin()" class="w-1/2 bg-gray-800 hover:bg-gray-700 text-gray-300 py-2 rounded-lg font-semibold">Cancelar</button>
-                <button onclick="descargarExcel()" class="w-1/2 bg-monbray hover:opacity-90 text-white py-2 rounded-lg font-semibold">Descargar</button>
+                <button onclick="cerrarModalAdmin()" class="w-1/2 bg-gray-800 hover:bg-gray-700 text-gray-300 py-2 rounded-lg font-semibold text-xs">Cancelar</button>
+                <button onclick="descargarExcel()" class="w-1/2 bg-monbray hover:opacity-90 text-white py-2 rounded-lg font-semibold text-xs">Descargar</button>
             </div>
         </div>
     </div>
 
-    <!-- SCRIPTS LÓGICA CONEXIÓN -->
     <script>
         // ==========================================
-        // CONFIGURACIÓN DE SUPABASE Y ADMIN
+        // CREDENCIALES CONFIGURADAS Y CORREGIDAS
         // ==========================================
-        const SUPABASE_URL = "https://ksqmsxzavjfxaalhpwll.supabase.co/rest/v1/"; // COLOCA TU URL REAL DE SUPABASE
-        const SUPABASE_ANON_KEY = "sb_publishable_2moM68qgln88LaVdMptGVw_FC53RBf7";     // COLOCA TU ANON KEY REAL
-        const ADMIN_PIN = "M0nbr4y2026";                              // PIN de acceso a la descarga
+        const SUPABASE_URL = "https://ksqmsxzavjfxaalhpwll.supabase.co"; 
+        const SUPABASE_ANON_KEY = "sb_publishable_2moM68qgln88LaVdMptGVw_FC53RBf7";     
+        const ADMIN_PIN = "M0nbr4y2026";                              
 
-        // Inicializar Supabase
         const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        // Detectar evento desde la URL (ej: ?evento=Expo_Colombia_2026)
         const urlParams = new URLSearchParams(window.location.search);
         const eventoParam = urlParams.get('evento') || 'General';
         document.getElementById('evento-tag').innerText = `Evento: ${eventoParam.replace(/_/g, ' ')}`;
 
-        // LÓGICA DE REGISTRO
         document.getElementById('registro-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('btn-submit');
@@ -161,7 +142,6 @@
             document.getElementById('msg-exito').classList.add('hidden');
             document.getElementById('msg-error').classList.add('hidden');
 
-            // Mapeo exacto de las columnas en Supabase (100% minúsculas y sin tildes)
             const nuevoRegistro = {
                 evento: eventoParam,
                 pais: document.getElementById('pais').value,
@@ -191,7 +171,6 @@
             }
         });
 
-        // FUNCIONES MODAL ADMIN Y EXCEL
         function abrirModalAdmin() {
             document.getElementById('modal-admin').classList.remove('hidden');
         }
@@ -213,7 +192,7 @@
                 .order('created_at', { ascending: false });
 
             if (error) {
-                alert("Error al obtener los datos de la base de datos.");
+                alert("Error al obtener los datos.");
                 console.error(error);
                 return;
             }
@@ -223,7 +202,6 @@
                 return;
             }
 
-            // Mapear columnas para el archivo Excel descargable
             const datosExcel = data.map(row => ({
                 ID: row.id,
                 Fecha: new Date(row.created_at).toLocaleString(),
@@ -239,12 +217,9 @@
                 Estatus: row.estatus
             }));
 
-            // Generar libro de trabajo Excel
             const worksheet = XLSX.utils.json_to_sheet(datosExcel);
             const workbook = XLSX.utils.book_new();
             XLSX.utils.book_append_sheet(workbook, worksheet, "Distribuidores");
-
-            // Guardar archivo .xlsx
             XLSX.writeFile(workbook, `Monbray_Distribuidores_${new Date().toISOString().slice(0,10)}.xlsx`);
             cerrarModalAdmin();
         }
