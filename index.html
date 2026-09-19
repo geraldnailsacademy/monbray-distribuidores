@@ -2,7 +2,7 @@
 <html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Monbray - Distribución Internacional</title>
     
     <!-- Tipografía Premium: Plus Jakarta Sans -->
@@ -19,6 +19,7 @@
 
     <script>
         tailwind.config = {
+            suppressWarning: true,
             theme: {
                 extend: {
                     fontFamily: {
@@ -37,16 +38,15 @@
     </script>
 
     <style>
-        /* Estilos Parallax & Glassmorphism */
         .ambient-glow {
-            background: radial-gradient(circle at 50% 10%, rgba(230, 18, 125, 0.15) 0%, rgba(10, 10, 15, 0) 70%);
+            background: radial-gradient(circle at 50% 10%, rgba(230, 18, 125, 0.18) 0%, rgba(10, 10, 15, 0) 75%);
         }
         .glass-card {
-            background: rgba(17, 24, 39, 0.65);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            background: rgba(17, 24, 39, 0.70);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
         }
         .btn-monbray {
             background: linear-gradient(135deg, #E6127D 0%, #B80A61 100%);
@@ -57,145 +57,155 @@
             box-shadow: 0 10px 30px rgba(230, 18, 125, 0.5);
         }
         
-        /* Contenedores Parallax */
-        .parallax-bg {
-            background-attachment: fixed;
+        /* Optimización Parallax Fluido para Móviles */
+        .parallax-section {
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
+            will-change: transform;
+        }
+        @media (min-width: 768px) {
+            .parallax-section {
+                background-attachment: fixed;
+            }
         }
 
-        ::-webkit-scrollbar { width: 6px; }
+        /* Prevención de Zoom en iOS e Inputs Ergonómicos */
+        input, select {
+            font-size: 16px !important;
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: #0a0a0f; }
-        ::-webkit-scrollbar-thumb { background: #222; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb { background: #E6127D; border-radius: 2px; }
     </style>
 </head>
 <body class="bg-gray-950 text-gray-100 font-sans relative overflow-x-hidden ambient-glow selection:bg-monbray selection:text-white">
 
-    <!-- HEADER / NAVEGACIÓN -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-xl border-b border-gray-800/60 transition-all">
-        <div class="container mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-3">
-                <img src="Monbray-Logo-.png" alt="Monbray Logo" class="h-10 object-contain drop-shadow-[0_0_10px_rgba(230,18,125,0.4)]">
+    <!-- HEADER / NAVEGACIÓN AMBIENTADA -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-gray-950/85 backdrop-blur-2xl border-b border-gray-800/80 transition-all">
+        <div class="container mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2">
+                <img src="Monbray-Logo-.png" alt="Monbray Logo" class="h-9 sm:h-11 object-contain drop-shadow-[0_0_12px_rgba(230,18,125,0.4)]">
             </a>
             <div class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-wider text-gray-300 uppercase">
                 <a href="#beneficios" class="hover:text-monbray transition-colors">Beneficios</a>
                 <a href="#productos" class="hover:text-monbray transition-colors">Colecciones</a>
                 <a href="#registro" class="hover:text-monbray transition-colors">Ser Distribuidor</a>
             </div>
-            <a href="#registro" class="btn-monbray text-white text-xs font-bold px-5 py-2.5 rounded-full uppercase tracking-wider">Unirse Ahora</a>
+            <a href="#registro" class="btn-monbray text-white text-[11px] sm:text-xs font-bold px-4 sm:px-6 py-2.5 rounded-full uppercase tracking-wider transition-all transform active:scale-95">Unirse Ahora</a>
         </div>
     </header>
 
     <!-- SECCIÓN HERO (PORTADA PRINCIPAL) -->
-    <section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-4 overflow-hidden">
-        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-monbray/20 blur-[150px] pointer-events-none rounded-full"></div>
+    <section class="relative min-h-[90vh] sm:min-h-screen flex items-center justify-center pt-28 pb-12 px-4 overflow-hidden">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[650px] h-[320px] sm:h-[400px] bg-monbray/25 blur-[120px] sm:blur-[160px] pointer-events-none rounded-full"></div>
 
-        <div class="container mx-auto max-w-5xl text-center relative z-10">
-            <!-- Badge de Evento -->
-            <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-gray-900/90 border border-monbray/40 backdrop-blur-md mb-8 shadow-xl">
+        <div class="container mx-auto max-w-4xl text-center relative z-10">
+            <!-- Badge de Evento Activo -->
+            <div class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gray-900/90 border border-monbray/40 backdrop-blur-md mb-6 shadow-xl">
                 <span class="relative flex h-2.5 w-2.5">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-monbray opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-monbray"></span>
                 </span>
-                <span id="evento-tag" class="text-xs font-bold tracking-widest text-gray-200 uppercase">EVENTO COMERCIAL EN VIVO</span>
+                <span id="evento-tag" class="text-[11px] sm:text-xs font-bold tracking-widest text-gray-200 uppercase">EVENTO COMERCIAL EN VIVO</span>
             </div>
 
-            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-none mb-6">
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-tight sm:leading-none mb-4 sm:mb-6">
                 Eleva tu negocio con la elegancia de <span class="bg-gradient-to-r from-monbray via-fuchsia-400 to-pink-500 bg-clip-text text-transparent">Monbray</span>
             </h1>
-            <p class="text-gray-300 text-base sm:text-xl max-w-2xl mx-auto font-normal leading-relaxed mb-10">
-                Líderes en insumos de manicura profesional. Forma parte de la red de distribución internacional más exclusiva del mercado.
+            <p class="text-gray-300 text-sm sm:text-lg max-w-xl mx-auto font-normal leading-relaxed mb-8 sm:mb-10 px-2">
+                Líderes en insumos de manicura profesional. Sé parte de la red de distribución internacional más exclusiva del mercado.
             </p>
 
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#registro" class="w-full sm:w-auto btn-monbray text-white font-bold px-8 py-4 rounded-xl text-sm uppercase tracking-wider transition-transform active:scale-95">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-2">
+                <a href="#registro" class="w-full sm:w-auto btn-monbray text-white font-bold px-8 py-4 rounded-2xl text-xs sm:text-sm uppercase tracking-wider transition-all active:scale-95 text-center">
                     Registrarme como Distribuidor
                 </a>
-                <a href="#productos" class="w-full sm:w-auto bg-gray-900 hover:bg-gray-800 text-gray-300 border border-gray-700/80 font-semibold px-8 py-4 rounded-xl text-sm transition-all">
+                <a href="#productos" class="w-full sm:w-auto bg-gray-900/80 hover:bg-gray-800 text-gray-300 border border-gray-700/80 font-semibold px-8 py-4 rounded-2xl text-xs sm:text-sm transition-all text-center">
                     Ver Colecciones
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN PARALLAX 1: COLECCIONES MONBRAY (Ruta Corregida a .jpeg) -->
-    <section id="productos" class="relative py-32 parallax-bg border-y border-gray-800/80" style="background-image: linear-gradient(rgba(10, 10, 15, 0.85), rgba(10, 10, 15, 0.85)), url('resource1.jpeg');">
-        <div class="container mx-auto px-6 max-w-5xl text-center relative z-10">
-            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Gama Completa de Alta Gama</h2>
-            <p class="text-gray-300 max-w-xl mx-auto text-sm sm:text-base mb-12">Presentaciones exclusivas con empaques estructurados y pigmentación de máxima fidelidad.</p>
+    <!-- SECCIÓN PARALLAX 1: COLECCIONES MONBRAY -->
+    <section id="productos" class="relative py-20 sm:py-32 parallax-section border-y border-gray-800/80" style="background-image: linear-gradient(rgba(10, 10, 15, 0.88), rgba(10, 10, 15, 0.88)), url('resource1.jpeg');">
+        <div class="container mx-auto px-4 sm:px-6 max-w-5xl text-center relative z-10">
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3 sm:mb-4">Gama Completa de Alta Gama</h2>
+            <p class="text-gray-300 max-w-xl mx-auto text-xs sm:text-base mb-8 sm:mb-12">Presentaciones exclusivas con empaques estructurados y pigmentación de máxima fidelidad.</p>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="glass-card p-6 rounded-2xl text-left border border-white/10">
-                    <div class="text-monbray font-bold text-lg mb-2">Pigmentación Gel</div>
-                    <p class="text-gray-400 text-xs leading-relaxed">Cobertura perfecta desde la primera capa con sellado térmico y larga duración.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+                <div class="glass-card p-5 sm:p-6 rounded-2xl text-left">
+                    <div class="text-monbray font-bold text-base sm:text-lg mb-1.5">Pigmentación Gel</div>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">Cobertura perfecta desde la primera capa con sellado térmico y larga duración.</p>
                 </div>
-                <div class="glass-card p-6 rounded-2xl text-left border border-white/10">
-                    <div class="text-monbray font-bold text-lg mb-2">Diseño de Empaque</div>
-                    <p class="text-gray-400 text-xs leading-relaxed">Presentaciones de lujo diseñadas para resaltar en vitrinas y estantes comerciales.</p>
+                <div class="glass-card p-5 sm:p-6 rounded-2xl text-left">
+                    <div class="text-monbray font-bold text-base sm:text-lg mb-1.5">Diseño de Empaque</div>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">Presentaciones de lujo diseñadas para resaltar en vitrinas y estantes comerciales.</p>
                 </div>
-                <div class="glass-card p-6 rounded-2xl text-left border border-white/10">
-                    <div class="text-monbray font-bold text-lg mb-2">Respaldo Técnico</div>
-                    <p class="text-gray-400 text-xs leading-relaxed">Fórmulas seguras aprobadas internacionalmente para salones y distribuidores.</p>
+                <div class="glass-card p-5 sm:p-6 rounded-2xl text-left">
+                    <div class="text-monbray font-bold text-base sm:text-lg mb-1.5">Respaldo Técnico</div>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">Fórmulas seguras aprobadas internacionalmente para salones y distribuidores.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- SECCIÓN BENEFICIOS -->
-    <section id="beneficios" class="py-24 relative bg-gray-950">
-        <div class="container mx-auto px-6 max-w-5xl">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-3">Ventajas de la Red Monbray</h2>
-                <p class="text-gray-400 text-sm">Oportunidades de escalabilidad comercial diseñadas para mayoristas y salones.</p>
+    <section id="beneficios" class="py-16 sm:py-24 relative bg-gray-950">
+        <div class="container mx-auto px-4 sm:px-6 max-w-5xl">
+            <div class="text-center mb-10 sm:mb-16">
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-2 sm:mb-3">Ventajas de la Red Monbray</h2>
+                <p class="text-gray-400 text-xs sm:text-sm">Oportunidades de escalabilidad comercial para mayoristas y salones.</p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-gray-900/60 border border-gray-800 p-8 rounded-2xl hover:border-monbray/50 transition-all">
-                    <div class="w-12 h-12 bg-monbray/20 text-monbray rounded-xl flex items-center justify-center font-bold text-xl mb-4">01</div>
-                    <h3 class="text-white font-bold text-lg mb-2">Márgenes Competitivos</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed">Estructura de precios preferencial para garantizar la máxima rentabilidad en cada lote.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
+                <div class="bg-gray-900/60 border border-gray-800/80 p-6 sm:p-8 rounded-2xl hover:border-monbray/50 transition-all">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-monbray/20 text-monbray rounded-xl flex items-center justify-center font-bold text-lg sm:text-xl mb-4">01</div>
+                    <h3 class="text-white font-bold text-base sm:text-lg mb-2">Márgenes Competitivos</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">Estructura de precios preferencial para garantizar la máxima rentabilidad en cada lote.</p>
                 </div>
-                <div class="bg-gray-900/60 border border-gray-800 p-8 rounded-2xl hover:border-monbray/50 transition-all">
-                    <div class="w-12 h-12 bg-monbray/20 text-monbray rounded-xl flex items-center justify-center font-bold text-xl mb-4">02</div>
-                    <h3 class="text-white font-bold text-lg mb-2">Soporte Promocional</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed">Material publicitario, muestras e imágenes oficiales listas para campañas de ventas.</p>
+                <div class="bg-gray-900/60 border border-gray-800/80 p-6 sm:p-8 rounded-2xl hover:border-monbray/50 transition-all">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-monbray/20 text-monbray rounded-xl flex items-center justify-center font-bold text-lg sm:text-xl mb-4">02</div>
+                    <h3 class="text-white font-bold text-base sm:text-lg mb-2">Soporte Promocional</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">Material publicitario, muestras e imágenes oficiales listas para campañas de ventas.</p>
                 </div>
-                <div class="bg-gray-900/60 border border-gray-800 p-8 rounded-2xl hover:border-monbray/50 transition-all sm:col-span-2 lg:col-span-1">
-                    <div class="w-12 h-12 bg-monbray/20 text-monbray rounded-xl flex items-center justify-center font-bold text-xl mb-4">03</div>
-                    <h3 class="text-white font-bold text-lg mb-2">Exclusividad Territorial</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed">Prioridad de distribución y abastecimiento continuo en tu región o ciudad.</p>
+                <div class="bg-gray-900/60 border border-gray-800/80 p-6 sm:p-8 rounded-2xl hover:border-monbray/50 transition-all sm:col-span-2 lg:col-span-1">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-monbray/20 text-monbray rounded-xl flex items-center justify-center font-bold text-lg sm:text-xl mb-4">03</div>
+                    <h3 class="text-white font-bold text-base sm:text-lg mb-2">Exclusividad Territorial</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">Prioridad de distribución y abastecimiento continuo en tu región o ciudad.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN PARALLAX 2: EDICIONES ESPECIALES (Ruta Corregida a .jpeg) -->
-    <section class="relative py-32 parallax-bg border-y border-gray-800/80" style="background-image: linear-gradient(rgba(10, 10, 15, 0.88), rgba(10, 10, 15, 0.88)), url('resource2.jpeg');">
-        <div class="container mx-auto px-6 max-w-4xl text-center relative z-10">
-            <span class="text-monbray font-extrabold tracking-widest text-xs uppercase mb-3 block">Ediciones Exclusivas</span>
-            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-6">Insumos Diseñados para Impactar</h2>
-            <p class="text-gray-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed mb-8">
+    <!-- SECCIÓN PARALLAX 2: EDICIONES ESPECIALES -->
+    <section class="relative py-20 sm:py-32 parallax-section border-y border-gray-800/80" style="background-image: linear-gradient(rgba(10, 10, 15, 0.9), rgba(10, 10, 15, 0.9)), url('resource2.jpeg');">
+        <div class="container mx-auto px-4 sm:px-6 max-w-4xl text-center relative z-10">
+            <span class="text-monbray font-extrabold tracking-widest text-[11px] sm:text-xs uppercase mb-2 block">Ediciones Exclusivas</span>
+            <h2 class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4 sm:mb-6">Insumos Diseñados para Impactar</h2>
+            <p class="text-gray-300 text-xs sm:text-base max-w-xl mx-auto leading-relaxed">
                 Desarrollos especiales adaptados a las tendencias locales de consumo con altos estándares de calidad y presentación.
             </p>
         </div>
     </section>
 
-    <!-- FORMULARIO INTEGRADO -->
-    <section id="registro" class="py-24 relative bg-gray-950">
-        <div class="container mx-auto px-4 max-w-xl">
-            <div class="glass-card rounded-3xl p-6 sm:p-10 relative overflow-hidden">
+    <!-- FORMULARIO INTEGRADO (OPTIMIZADO PARA PANTALLAS TÁCTILES) -->
+    <section id="registro" class="py-16 sm:py-24 relative bg-gray-950">
+        <div class="container mx-auto px-3 sm:px-4 max-w-xl">
+            <div class="glass-card rounded-3xl p-5 sm:p-10 relative overflow-hidden">
                 <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-monbray/60 to-transparent"></div>
 
-                <div class="text-center mb-8">
-                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-2">Formulario de Registro</h2>
+                <div class="text-center mb-6 sm:mb-8">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-1.5">Formulario de Registro</h2>
                     <p class="text-gray-400 text-xs sm:text-sm">Completa tus datos comerciales para validar tu solicitud de distribución.</p>
                 </div>
 
-                <form id="registro-form" class="space-y-5">
+                <form id="registro-form" class="space-y-4 sm:space-y-5">
                     <div>
-                        <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">País *</label>
-                        <select id="pais" required class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
+                        <label class="block text-[11px] sm:text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1.5">País *</label>
+                        <select id="pais" required class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
                             <option value="">Selecciona tu país</option>
                             <option value="Colombia">Colombia 🇨🇴</option>
                             <option value="Venezuela">Venezuela 🇻🇪</option>
@@ -204,29 +214,29 @@
                     </div>
 
                     <div>
-                        <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Nombre Completo *</label>
-                        <input type="text" id="nombre" required placeholder="Ej. María Pérez" class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
+                        <label class="block text-[11px] sm:text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1.5">Nombre Completo *</label>
+                        <input type="text" id="nombre" required placeholder="Ej. María Pérez" class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
                     </div>
 
                     <div>
-                        <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Empresa o Nombre Comercial</label>
-                        <input type="text" id="empresa" placeholder="Ej. Studio Nails & Beauty" class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
+                        <label class="block text-[11px] sm:text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1.5">Empresa o Nombre Comercial</label>
+                        <input type="text" id="empresa" placeholder="Ej. Studio Nails & Beauty" class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">WhatsApp *</label>
-                            <input type="tel" id="whatsapp" required placeholder="+57 300 1234567" class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
+                            <label class="block text-[11px] sm:text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1.5">WhatsApp *</label>
+                            <input type="tel" id="whatsapp" required placeholder="+57 300 1234567" class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Correo *</label>
-                            <input type="email" id="email" required placeholder="correo@ejemplo.com" class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
+                            <label class="block text-[11px] sm:text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1.5">Correo Electrónico *</label>
+                            <input type="email" id="email" required placeholder="correo@ejemplo.com" class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Rubro Comercial *</label>
-                        <select id="rubro" required class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
+                        <label class="block text-[11px] sm:text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1.5">Rubro Comercial *</label>
+                        <select id="rubro" required class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
                             <option value="">Selecciona tu modelo de negocio</option>
                             <option value="Distribuidora de Belleza">Distribuidora de Belleza</option>
                             <option value="Mayorista">Mayorista</option>
@@ -238,16 +248,16 @@
                     </div>
 
                     <div>
-                        <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Ciudad y Estado *</label>
-                        <input type="text" id="ciudad_estado" required placeholder="Ej. Medellín, Antioquia / Caracas, DCI" class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
+                        <label class="block text-[11px] sm:text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1.5">Ciudad y Estado *</label>
+                        <input type="text" id="ciudad_estado" required placeholder="Ej. Medellín, Antioquia / Caracas, DCI" class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
                     </div>
 
                     <div>
-                        <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Dirección Comercial</label>
-                        <input type="text" id="direccion" placeholder="Ej. Av. Principal, Local 12" class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
+                        <label class="block text-[11px] sm:text-xs font-semibold text-gray-300 uppercase tracking-wider mb-1.5">Dirección Comercial</label>
+                        <input type="text" id="direccion" placeholder="Ej. Av. Principal, Local 12" class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
                     </div>
 
-                    <button type="submit" id="btn-submit" class="w-full btn-monbray font-bold py-4 rounded-xl text-white tracking-wide uppercase text-sm transition-all duration-300 transform active:scale-[0.99] flex items-center justify-center gap-2 mt-6 cursor-pointer">
+                    <button type="submit" id="btn-submit" class="w-full btn-monbray font-bold py-4 rounded-xl text-white tracking-wide uppercase text-xs sm:text-sm transition-all duration-300 transform active:scale-[0.98] flex items-center justify-center gap-2 mt-6 cursor-pointer">
                         <span id="btn-text">Completar Registro</span>
                         <svg id="btn-spinner" class="hidden animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -289,7 +299,7 @@
         </div>
     </div>
 
-    <!-- SCRIPT DE CONEXIÓN -->
+    <!-- SCRIPT DE CONEXIÓN CON SUPABASE -->
     <script>
         const SUPABASE_URL = "https://ksqmsxzavjfxaalhpwll.supabase.co"; 
         const SUPABASE_ANON_KEY = "sb_publishable_2moM68qgln88LaVdMptGVw_FC53RBf7";     
