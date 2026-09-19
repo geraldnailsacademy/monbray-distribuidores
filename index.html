@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monbray - Registro de Distribuidores Internacionales</title>
+    <title>Monbray - Distribución Internacional</title>
     
     <!-- Tipografía Premium: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,11 +37,10 @@
     </script>
 
     <style>
-        /* Halo Ambiental Ambient Glow */
+        /* Estilos Parallax & Glassmorphism */
         .ambient-glow {
-            background: radial-gradient(circle at 50% 15%, rgba(230, 18, 125, 0.18) 0%, rgba(10, 10, 15, 0) 70%);
+            background: radial-gradient(circle at 50% 10%, rgba(230, 18, 125, 0.15) 0%, rgba(10, 10, 15, 0) 70%);
         }
-        /* Borde Glassmorphism con Gradiente Superior */
         .glass-card {
             background: rgba(17, 24, 39, 0.65);
             backdrop-filter: blur(20px);
@@ -49,7 +48,6 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
-        /* Gradiente Monbray CTA */
         .btn-monbray {
             background: linear-gradient(135deg, #E6127D 0%, #B80A61 100%);
             box-shadow: 0 8px 25px rgba(230, 18, 125, 0.35);
@@ -58,197 +56,259 @@
             background: linear-gradient(135deg, #FF1A8C 0%, #C40D68 100%);
             box-shadow: 0 10px 30px rgba(230, 18, 125, 0.5);
         }
-        /* Custom Scrollbar */
+        
+        /* Contenedores Parallax */
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #0a0a0f; }
         ::-webkit-scrollbar-thumb { background: #222; border-radius: 3px; }
     </style>
 </head>
-<body class="bg-gray-950 text-gray-100 min-h-screen flex flex-col justify-between font-sans relative overflow-x-hidden ambient-glow">
+<body class="bg-gray-950 text-gray-100 font-sans relative overflow-x-hidden ambient-glow selection:bg-monbray selection:text-white">
 
-    <!-- EFECTO AMBIENTAL DE FONDO -->
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-monbray/20 blur-[140px] pointer-events-none rounded-full"></div>
-
-    <!-- HEADER DE MARCA -->
-    <header class="py-8 text-center relative z-10">
-        <div class="container mx-auto px-4 flex flex-col items-center">
-            <!-- Logo oficial con resplandor ambiental -->
-            <div class="relative group cursor-pointer">
-                <div class="absolute -inset-1 bg-gradient-to-r from-monbray to-fuchsia-600 rounded-full blur opacity-40 group-hover:opacity-75 transition duration-500"></div>
-                <img src="Monbray-Logo-.png" alt="Monbray Nail Art Professional" class="relative h-16 md:h-20 object-contain drop-shadow-[0_0_20px_rgba(230,18,125,0.3)]">
+    <!-- HEADER / NAVEGACIÓN -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-xl border-b border-gray-800/60 transition-all">
+        <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <img src="Monbray-Logo-.png" alt="Monbray Logo" class="h-10 object-contain drop-shadow-[0_0_10px_rgba(230,18,125,0.4)]">
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-wider text-gray-300 uppercase">
+                <a href="#beneficios" class="hover:text-monbray transition-colors">Beneficios</a>
+                <a href="#productos" class="hover:text-monbray transition-colors">Colecciones</a>
+                <a href="#registro" class="hover:text-monbray transition-colors">Ser Distribuidor</a>
             </div>
+            <a href="#registro" class="btn-monbray text-white text-xs font-bold px-5 py-2.5 rounded-full uppercase tracking-wider">Unirse Ahora</a>
+        </div>
+    </header>
 
-            <!-- Badge Dinámico con Pulso en Vivo -->
-            <div class="mt-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gray-900/80 border border-monbray/30 backdrop-blur-md shadow-lg">
+    <!-- SECCIÓN HERO (PORTADA PRINCIPAL) -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-4 overflow-hidden">
+        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-monbray/20 blur-[150px] pointer-events-none rounded-full"></div>
+
+        <div class="container mx-auto max-w-5xl text-center relative z-10">
+            <!-- Badge de Evento -->
+            <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-gray-900/90 border border-monbray/40 backdrop-blur-md mb-8 shadow-xl">
                 <span class="relative flex h-2.5 w-2.5">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-monbray opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-monbray"></span>
                 </span>
-                <span id="evento-tag" class="text-xs font-semibold tracking-wider text-gray-300 uppercase">EVENTO EN VIVO</span>
+                <span id="evento-tag" class="text-xs font-bold tracking-widest text-gray-200 uppercase">EVENTO COMERCIAL EN VIVO</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-none mb-6">
+                Eleva tu negocio con la elegancia de <span class="bg-gradient-to-r from-monbray via-fuchsia-400 to-pink-500 bg-clip-text text-transparent">Monbray</span>
+            </h1>
+            <p class="text-gray-300 text-base sm:text-xl max-w-2xl mx-auto font-normal leading-relaxed mb-10">
+                Líderes en insumos de manicura profesional. Formas parte de la red de distribución internacional más exclusiva del mercado.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#registro" class="w-full sm:w-auto btn-monbray text-white font-bold px-8 py-4 rounded-xl text-sm uppercase tracking-wider transition-transform active:scale-95">
+                    Registrarme como Distribuidor
+                </a>
+                <a href="#productos" class="w-full sm:w-auto bg-gray-900 hover:bg-gray-800 text-gray-300 border border-gray-700/80 font-semibold px-8 py-4 rounded-xl text-sm transition-all">
+                    Ver Colecciones
+                </a>
             </div>
         </div>
-    </header>
+    </section>
 
-    <!-- FORMULARIO GLASSMORPHISM -->
-    <main class="container mx-auto px-4 py-4 max-w-xl flex-grow relative z-10">
-        <div class="glass-card rounded-3xl p-6 sm:p-10 relative overflow-hidden">
+    <!-- SECCIÓN PARALLAX 1: COLECCIONES MONBRAY -->
+    <section id="productos" class="relative py-32 parallax-bg border-y border-gray-800/80" style="background-image: linear-gradient(rgba(10, 10, 15, 0.85), rgba(10, 10, 15, 0.85)), url('resource1.jpg');">
+        <div class="container mx-auto px-6 max-w-5xl text-center relative z-10">
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Gama Completa de Alta Gama</h2>
+            <p class="text-gray-300 max-w-xl mx-auto text-sm sm:text-base mb-12">Presentaciones exclusivas con empaques estructurados y pigmentación de máxima fidelidad.</p>
             
-            <!-- Resplandor Sutil Superior -->
-            <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-monbray/60 to-transparent"></div>
-
-            <div class="text-center mb-8">
-                <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white mb-2">Registro de Distribuidores</h1>
-                <p class="text-gray-400 text-xs sm:text-sm max-w-sm mx-auto">Únete a la red comercial internacional exclusiva de <strong>Monbray Nail Art Professional</strong>.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card p-6 rounded-2xl text-left border border-white/10">
+                    <div class="text-monbray font-bold text-lg mb-2">Pigmentación Gel</div>
+                    <p class="text-gray-400 text-xs leading-relaxed">Cobertura perfecta desde la primera capa con sellado térmico y larga duración.</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl text-left border border-white/10">
+                    <div class="text-monbray font-bold text-lg mb-2">Diseño de Empaque</div>
+                    <p class="text-gray-400 text-xs leading-relaxed">Presentaciones de lujo diseñadas para resaltar en vitrinas y estantes comerciales.</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl text-left border border-white/10">
+                    <div class="text-monbray font-bold text-lg mb-2">Respaldo Técnico</div>
+                    <p class="text-gray-400 text-xs leading-relaxed">Fórmulas seguras aprobadas internacionalmente para salones y distribuidores.</p>
+                </div>
             </div>
-
-            <form id="registro-form" class="space-y-5">
-                
-                <!-- PAÍS -->
-                <div>
-                    <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">País de Distribución *</label>
-                    <div class="relative">
-                        <select id="pais" required class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all appearance-none cursor-pointer">
-                            <option value="" class="bg-gray-900">Selecciona tu país</option>
-                            <option value="Colombia" class="bg-gray-900">Colombia 🇨🇴</option>
-                            <option value="Venezuela" class="bg-gray-900">Venezuela 🇻🇪</option>
-                            <option value="Otro" class="bg-gray-900">Otro País 🌎</option>
-                        </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-400">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- NOMBRE COMPLETO -->
-                <div>
-                    <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Nombre Completo *</label>
-                    <input type="text" id="nombre" required placeholder="Ej. María Pérez" class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
-                </div>
-
-                <!-- EMPRESA / NEGOCIO -->
-                <div>
-                    <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Empresa o Nombre Comercial</label>
-                    <input type="text" id="empresa" placeholder="Ej. Studio Nails & Beauty" class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
-                </div>
-
-                <!-- CUADRÍCULA RESPONSIVA: WHATSAPP Y EMAIL -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">WhatsApp *</label>
-                        <input type="tel" id="whatsapp" required placeholder="+57 300 1234567" class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus-monbray focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Correo Electrónico *</label>
-                        <input type="email" id="email" required placeholder="correo@ejemplo.com" class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
-                    </div>
-                </div>
-
-                <!-- RUBRO / TIPO DE NEGOCIO -->
-                <div>
-                    <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Rubro Comercial *</label>
-                    <div class="relative">
-                        <select id="rubro" required class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all appearance-none cursor-pointer">
-                            <option value="" class="bg-gray-900">Selecciona tu modelo de negocio</option>
-                            <option value="Distribuidora de Belleza" class="bg-gray-900">Distribuidora de Belleza</option>
-                            <option value="Mayorista" class="bg-gray-900">Mayorista</option>
-                            <option value="Academia de Uñas" class="bg-gray-900">Academia / Centro de Capacitación</option>
-                            <option value="Salón de Uñas / Spa" class="bg-gray-900">Salón de Uñas / Spa</option>
-                            <option value="Técnica Independiente" class="bg-gray-900">Técnica Independiente / Lash</option>
-                            <option value="Otro" class="bg-gray-900">Otro</option>
-                        </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-400">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CIUDAD Y ESTADO -->
-                <div>
-                    <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Ciudad y Estado / Departamento *</label>
-                    <input type="text" id="ciudad_estado" required placeholder="Ej. Medellín, Antioquia / Caracas, DCI" class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
-                </div>
-
-                <!-- DIRECCIÓN -->
-                <div>
-                    <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Dirección Comercial o Fiscal</label>
-                    <input type="text" id="direccion" placeholder="Ej. Av. Principal, C.C. Plaza, Local 12" class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
-                </div>
-
-                <!-- BOTÓN CTA CON SPINNER -->
-                <button type="submit" id="btn-submit" class="w-full btn-monbray font-bold py-4 rounded-xl text-white tracking-wide uppercase text-sm transition-all duration-300 transform active:scale-[0.99] flex items-center justify-center gap-2 mt-6 cursor-pointer">
-                    <span id="btn-text">Completar Registro</span>
-                    <svg id="btn-spinner" class="hidden animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                </button>
-            </form>
-
-            <!-- MENSAJES DE ESTADO REDISEÑADOS -->
-            <div id="msg-exito" class="hidden mt-8 bg-emerald-950/80 border border-emerald-500/40 p-6 rounded-2xl text-center backdrop-blur-md">
-                <div class="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                </div>
-                <h3 class="text-emerald-400 font-bold text-lg mb-1">¡Registro Exitoso!</h3>
-                <p class="text-gray-300 text-xs sm:text-sm">Gracias por tu interés en representarnos. Un asesor comercial de <strong>Monbray</strong> se pondrá en contacto contigo.</p>
-            </div>
-
-            <div id="msg-error" class="hidden mt-6 bg-rose-950/80 border border-rose-500/40 p-4 rounded-xl text-center text-rose-300 text-xs sm:text-sm backdrop-blur-md">
-                Ocurrió un inconveniente al procesar tu solicitud. Por favor, reintenta.
-            </div>
-
         </div>
-    </main>
+    </section>
 
-    <!-- FOOTER Y ACCESO ADMINISTRATIVO -->
-    <footer class="py-6 border-t border-gray-900/80 text-center text-gray-500 text-xs relative z-10">
+    <!-- SECCIÓN BENEFICIOS -->
+    <section id="beneficios" class="py-24 relative bg-gray-950">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-3">Ventajas de la Red Monbray</h2>
+                <p class="text-gray-400 text-sm">Oportunidades de escalabilidad comercial diseñadas para mayoristas y salones.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-900/60 border border-gray-800 p-8 rounded-2xl hover:border-monbray/50 transition-all">
+                    <div class="w-12 h-12 bg-monbray/20 text-monbray rounded-xl flex items-center justify-center font-bold text-xl mb-4">01</div>
+                    <h3 class="text-white font-bold text-lg mb-2">Márgenes Competitivos</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Estructura de precios preferencial para garantizar la máxima rentabilidad en cada lote.</p>
+                </div>
+                <div class="bg-gray-900/60 border border-gray-800 p-8 rounded-2xl hover:border-monbray/50 transition-all">
+                    <div class="w-12 h-12 bg-monbray/20 text-monbray rounded-xl flex items-center justify-center font-bold text-xl mb-4">02</div>
+                    <h3 class="text-white font-bold text-lg mb-2">Soporte Promocional</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Material publicitario, muestras e imágenes oficiales listas para campañas de ventas.</p>
+                </div>
+                <div class="bg-gray-900/60 border border-gray-800 p-8 rounded-2xl hover:border-monbray/50 transition-all sm:col-span-2 lg:col-span-1">
+                    <div class="w-12 h-12 bg-monbray/20 text-monbray rounded-xl flex items-center justify-center font-bold text-xl mb-4">03</div>
+                    <h3 class="text-white font-bold text-lg mb-2">Exclusividad Territorial</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Prioridad de distribución y abastecimiento continuo en tu región o ciudad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN PARALLAX 2: EDICIONES ESPECIALES -->
+    <section class="relative py-32 parallax-bg border-y border-gray-800/80" style="background-image: linear-gradient(rgba(10, 10, 15, 0.88), rgba(10, 10, 15, 0.88)), url('resource2.jpg');">
+        <div class="container mx-auto px-6 max-w-4xl text-center relative z-10">
+            <span class="text-monbray font-extrabold tracking-widest text-xs uppercase mb-3 block">Ediciones Exclusivas</span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-6">Insumos Diseñados para Impactar</h2>
+            <p class="text-gray-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed mb-8">
+                Desarrollos especiales adaptados a las tendencias locales de consumo con altos estándares de calidad y presentación.
+            </p>
+        </div>
+    </section>
+
+    <!-- FORMULARIO INTEGRADO -->
+    <section id="registro" class="py-24 relative bg-gray-950">
+        <div class="container mx-auto px-4 max-w-xl">
+            <div class="glass-card rounded-3xl p-6 sm:p-10 relative overflow-hidden">
+                <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-monbray/60 to-transparent"></div>
+
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-2">Formulario de Registro</h2>
+                    <p class="text-gray-400 text-xs sm:text-sm">Completa tus datos comerciales para validar tu solicitud de distribución.</p>
+                </div>
+
+                <form id="registro-form" class="space-y-5">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">País *</label>
+                        <select id="pais" required class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
+                            <option value="">Selecciona tu país</option>
+                            <option value="Colombia">Colombia 🇨🇴</option>
+                            <option value="Venezuela">Venezuela 🇻🇪</option>
+                            <option value="Otro">Otro País 🌎</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Nombre Completo *</label>
+                        <input type="text" id="nombre" required placeholder="Ej. María Pérez" class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Empresa o Nombre Comercial</label>
+                        <input type="text" id="empresa" placeholder="Ej. Studio Nails & Beauty" class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">WhatsApp *</label>
+                            <input type="tel" id="whatsapp" required placeholder="+57 300 1234567" class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Correo *</label>
+                            <input type="email" id="email" required placeholder="correo@ejemplo.com" class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Rubro Comercial *</label>
+                        <select id="rubro" required class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
+                            <option value="">Selecciona tu modelo de negocio</option>
+                            <option value="Distribuidora de Belleza">Distribuidora de Belleza</option>
+                            <option value="Mayorista">Mayorista</option>
+                            <option value="Academia de Uñas">Academia / Centro de Capacitación</option>
+                            <option value="Salón de Uñas / Spa">Salón de Uñas / Spa</option>
+                            <option value="Técnica Independiente">Técnica Independiente / Lash</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Ciudad y Estado *</label>
+                        <input type="text" id="ciudad_estado" required placeholder="Ej. Medellín, Antioquia / Caracas, DCI" class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Dirección Comercial</label>
+                        <input type="text" id="direccion" placeholder="Ej. Av. Principal, Local 12" class="w-full bg-gray-900/90 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30 transition-all">
+                    </div>
+
+                    <button type="submit" id="btn-submit" class="w-full btn-monbray font-bold py-4 rounded-xl text-white tracking-wide uppercase text-sm transition-all duration-300 transform active:scale-[0.99] flex items-center justify-center gap-2 mt-6 cursor-pointer">
+                        <span id="btn-text">Completar Registro</span>
+                        <svg id="btn-spinner" class="hidden animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                    </button>
+                </form>
+
+                <div id="msg-exito" class="hidden mt-8 bg-emerald-950/80 border border-emerald-500/40 p-6 rounded-2xl text-center backdrop-blur-md">
+                    <h3 class="text-emerald-400 font-bold text-lg mb-1">¡Registro Completado!</h3>
+                    <p class="text-gray-300 text-xs sm:text-sm">Gracias por tu interés. Un representante de <strong>Monbray</strong> se pondrá en contacto a la brevedad.</p>
+                </div>
+
+                <div id="msg-error" class="hidden mt-6 bg-rose-950/80 border border-rose-500/40 p-4 rounded-xl text-center text-rose-300 text-xs sm:text-sm">
+                    Ocurrió un inconveniente al procesar la solicitud. Por favor reintenta.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 border-t border-gray-900 bg-gray-950 text-center text-gray-500 text-xs">
         <p>© 2026 Monbray Nail Art Professional. Todos los derechos reservados.</p>
-        <button onclick="abrirModalAdmin()" class="mt-2 text-gray-400 hover:text-monbray transition-colors underline font-medium cursor-pointer">
-            Acceso Comercial (Descargar Datos)
+        <button onclick="abrirModalAdmin()" class="mt-2 text-gray-400 hover:text-monbray transition-colors underline font-medium">
+            Acceso Comercial (Descargar Excel)
         </button>
     </footer>
 
-    <!-- MODAL ADMINISTRATIVO CON GLASSMORPHISM -->
+    <!-- MODAL ADMIN -->
     <div id="modal-admin" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 z-50">
-        <div class="glass-card rounded-2xl p-6 sm:p-8 max-w-sm w-full border border-gray-700/60 relative">
+        <div class="glass-card rounded-2xl p-6 sm:p-8 max-w-sm w-full border border-gray-700/60">
             <h3 class="text-lg font-bold text-white mb-1 text-center">Panel Comercial Monbray</h3>
-            <p class="text-gray-400 text-xs mb-6 text-center">Ingresa la clave autorizada para exportar la base de datos a Excel.</p>
-            
-            <input type="password" id="admin-pin-input" placeholder="PIN de Seguridad" class="w-full bg-gray-900/90 border border-gray-700 rounded-xl px-4 py-3 text-white text-center text-lg mb-6 tracking-widest focus:outline-none focus:border-monbray focus:ring-2 focus:ring-monbray/30">
-            
+            <p class="text-gray-400 text-xs mb-6 text-center">Clave de seguridad para exportar la base de datos.</p>
+            <input type="password" id="admin-pin-input" placeholder="PIN" class="w-full bg-gray-900/90 border border-gray-700 rounded-xl px-4 py-3 text-white text-center text-lg mb-6 tracking-widest focus:outline-none focus:border-monbray">
             <div class="flex gap-3">
-                <button onclick="cerrarModalAdmin()" class="w-1/2 bg-gray-800 hover:bg-gray-700 text-gray-300 py-3 rounded-xl font-semibold text-xs tracking-wider uppercase transition-all">Cancelar</button>
-                <button onclick="descargarExcel()" class="w-1/2 btn-monbray text-white py-3 rounded-xl font-semibold text-xs tracking-wider uppercase transition-all">Descargar</button>
+                <button onclick="cerrarModalAdmin()" class="w-1/2 bg-gray-800 text-gray-300 py-3 rounded-xl font-semibold text-xs uppercase">Cancelar</button>
+                <button onclick="descargarExcel()" class="w-1/2 btn-monbray text-white py-3 rounded-xl font-semibold text-xs uppercase">Descargar</button>
             </div>
         </div>
     </div>
 
-    <!-- SCRIPTS LÓGICA Y SUPABASE -->
+    <!-- SCRIPT DE CONEXIÓN -->
     <script>
-        // ==========================================
-        // CREDENCIALES CONFIGURADAS Y AUTENTICADAS
-        // ==========================================
         const SUPABASE_URL = "https://ksqmsxzavjfxaalhpwll.supabase.co"; 
         const SUPABASE_ANON_KEY = "sb_publishable_2moM68qgln88LaVdMptGVw_FC53RBf7";     
         const ADMIN_PIN = "M0nbr4y2026";                              
 
         const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        // Detectar evento desde URL
         const urlParams = new URLSearchParams(window.location.search);
         const eventoParam = urlParams.get('evento') || 'General';
         document.getElementById('evento-tag').innerText = `EVENTO: ${eventoParam.replace(/_/g, ' ')}`;
 
-        // LÓGICA DE REGISTRO
         document.getElementById('registro-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('btn-submit');
             const btnText = document.getElementById('btn-text');
             const btnSpinner = document.getElementById('btn-spinner');
 
-            // Estado de Carga
             btn.disabled = true;
-            btnText.innerText = 'PROCESANDO REGISTRO...';
+            btnText.innerText = 'PROCESANDO...';
             btnSpinner.classList.remove('hidden');
 
             document.getElementById('msg-exito').classList.add('hidden');
@@ -284,7 +344,6 @@
             }
         });
 
-        // MODAL Y DESCARGA A EXCEL
         function abrirModalAdmin() {
             document.getElementById('modal-admin').classList.remove('hidden');
             document.getElementById('admin-pin-input').focus();
@@ -297,7 +356,7 @@
         async function descargarExcel() {
             const pin = document.getElementById('admin-pin-input').value;
             if (pin !== ADMIN_PIN) {
-                alert("PIN de seguridad incorrecto.");
+                alert("PIN incorrecto.");
                 return;
             }
 
@@ -307,13 +366,12 @@
                 .order('created_at', { ascending: false });
 
             if (error) {
-                alert("Error al obtener los datos de la base de datos.");
-                console.error(error);
+                alert("Error al consultar la base de datos.");
                 return;
             }
 
             if (!data || data.length === 0) {
-                alert("Aún no existen registros guardados.");
+                alert("Sin datos registrados aún.");
                 return;
             }
 
